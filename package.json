@@ -1,13 +1,55 @@
 {
-  "dependencies": {
-    "discord.js": "^13.3.1",
-    "dotenv": "^10.0.0",
-    "fs": "^0.0.1-security",
-    "node-fetch": "^2.6.1",
-    "cleverbot-free": "^1.1.7"
-  },
-
-  "engines":{
-    "node":"17.1.0"
-  }
+	"name": "discordbot-template",
+	"version": "3.2.0",
+	"description": "A modified template based on discordjs.guide to create your own discord-js based bot!",
+	"funding": "https://ko-fi.com/namanvrati",
+	"main": "bot.js",
+	"scripts": {
+		"start": "node bot.js",
+		"dev": "nodemon bot.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NamVr/DiscordBot-Template.git"
+	},
+	"keywords": [
+		"discord-js"
+	],
+	"author": {
+		"name": "Naman Vrati",
+		"url": "https://github.com/NamVr",
+		"email": "info@namanvrati.cf"
+	},
+	"contributors": [
+		{
+			"name": "Krish Garg",
+			"url": "https://github.com/KrishGarg"
+		},
+		{
+			"name": "Thomas Fournier",
+			"email": "thomas@artivain.com",
+			"url": "https://github.com/GoudronViande24"
+		}
+	],
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/NamVr/DiscordBot-Template/issues"
+	},
+	"homepage": "https://github.com/NamVr/DiscordBot-Template#readme",
+	"dependencies": {
+		"@discordjs/builders": "^0.13.0",
+		"@discordjs/rest": "^0.4.1",
+		"booru": "^2.5.6",
+		"discord-api-types": "^0.33.0",
+		"discord.js": "^13.7.0",
+		"mysql2": "^2.3.3",
+		"node-fetch": "^3.2.6",
+		"random-reddit": "^2.0.3",
+		"request": "^2.88.2",
+		"simple-git": "^3.7.1",
+		"simple-json-db": "^2.0.0"
+	},
+	"devDependencies": {
+		"nodemon": "^2.0.16"
+	}
 }
