@@ -5,9 +5,7 @@ module.exports = {
     async execute(message) {
 
         var messageContext = fs.readFileSync('cleverbot-memory.txt').toString().split("\n");
-        for(i in messageContext) {
-            console.log(messageContext[i]);
-        }
+
         var prompt = message.content.substring(22);
 
         console.log(prompt);
