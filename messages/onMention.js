@@ -16,13 +16,13 @@ function RespondToMessage(message, response, prompt)
 {
     message.channel.send({ content: response});
     
-    fs.writeFile('cleverbot-memory.txt', prompt, err => {
+    fs.writeFile('cleverbot-memory.txt', prompt, { flag: 'a+' }, err => {
         if (err) {
           console.error(err);
         }
     });
 
-    fs.writeFile('cleverbot-memory.txt', response, err => {
+    fs.writeFile('cleverbot-memory.txt', response, { flag: 'a+' }, err => {
         if (err) {
           console.error(err);
         }
