@@ -25,23 +25,6 @@ const client = new Client({
 });
 
 
-//
-// MYSQL STUFF
-//
-const { mysql } = require("./config.json");
-const { createConnection } = require('mysql2');
-global.con = createConnection(mysql);
-
-// Then we are going to connect to our MySQL database and we will test this on errors
-global.con.connect(err => {
-    // Console log if there is an error
-    if (err) return console.log(err);
-
-    // No error found?
-    console.log(`MySQL has been connected!`);
-});
-
-
 /**********************************************************************/
 // Below we will be making an event handler!
 
