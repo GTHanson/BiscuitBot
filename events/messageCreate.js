@@ -30,11 +30,6 @@ module.exports = {
 
 		const { client, guild, channel, content, author } = message;
 
-        /**
-		 * @type {String[]}
-		 * @description The Message Content of the received message seperated by spaces (' ') in an array, this excludes prefix and command/alias itself.
-		 */
-        const args = content.slice(matchedPrefix.length).trim().split(/ +/);
 		// Checks if the bot is mentioned in the message all alone and triggers onMention trigger.
 		// You can change the behavior as per your liking at ./messages/onMention.js
 
@@ -42,7 +37,7 @@ module.exports = {
 			message.content == `<@${client.user.id}>` ||
 			message.content == `<@!${client.user.id}>`
 		) {
-			require("../messages/onMention").execute(message, args);
+			require("../messages/onMention").execute(message);
 			return;
 		}
 
@@ -70,6 +65,13 @@ module.exports = {
 		 */
 
 		const [matchedPrefix] = content.toLowerCase().match(prefixRegex);
+
+		/**
+		 * @type {String[]}
+		 * @description The Message Content of the received message seperated by spaces (' ') in an array, this excludes prefix and command/alias itself.
+		 */
+
+		const args = content.slice(matchedPrefix.length).trim().split(/ +/);
 
 		/**
 		 * @type {String}

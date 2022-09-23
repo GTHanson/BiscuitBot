@@ -1,11 +1,8 @@
 const cleverbot = require("cleverbot-free");
 
 module.exports = {
-    async execute(message, args) {
-        var messageText = "";
-		for(var i = 0; i < args.length; i++) {
-			messageText += args[i] + " ";
-		}
+    async execute(message) {
+        var messageText = message.content;
 
 		cleverbot(messageText).then(response => 
             message.channel.send({ content: response})
