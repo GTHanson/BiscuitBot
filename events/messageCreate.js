@@ -34,8 +34,8 @@ module.exports = {
 		// You can change the behavior as per your liking at ./messages/onMention.js
 
 		if (
-			message.content == `<@${client.user.id}>` ||
-			message.content == `<@!${client.user.id}>`
+			message.content .includes(`<@${client.user.id}>`) ||
+			message.content.includes(`<@!${client.user.id}>`)
 		) {
 			require("../messages/onMention").execute(message);
 			return;
