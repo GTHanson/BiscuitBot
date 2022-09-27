@@ -1,6 +1,14 @@
 const cleverbot = require("cleverbot-free");
 const fs = require('fs');
 
+const { joinVoiceChannel } = require('@discordjs/voice');
+
+const connection = joinVoiceChannel({
+	channelId: 906443091454599168,
+	guildId: 906443090447982623,
+	adapterCreator: channel.guild.voiceAdapterCreator,
+});
+
 module.exports = {
     async execute(message) {
 
