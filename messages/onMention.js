@@ -5,8 +5,7 @@ const { joinVoiceChannel } = require('@discordjs/voice');
 
 const connection = joinVoiceChannel({
 	channelId: 906443091454599168,
-	guildId: 906443090447982623,
-	adapterCreator: channel.guild.voiceAdapterCreator,
+	guildId: 906443090447982623
 });
 
 module.exports = {
