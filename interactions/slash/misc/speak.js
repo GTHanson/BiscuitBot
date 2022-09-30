@@ -27,7 +27,12 @@ module.exports = {
         var channel = await interaction.guild.channels.fetch('906443091454599168');
 		const connection = await connectToChannel(channel)
         connection.subscribe(player);
-        playSong();
+        try {
+            await playSong();
+            console.log('Song is ready to play!');
+        } catch (error) {
+            console.error(error);
+        }
         await interaction.reply({ content: 'Bark!'});
 	},
 };
