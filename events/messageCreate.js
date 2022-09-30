@@ -163,52 +163,29 @@ module.exports = {
 		timestamps.set(message.author.id, now);
 		setTimeout(() => timestamps.delete(message.author.id), cooldownAmount);
 
-		// Rest your creativity is below.
+		// Rest your creativity is below
+        console.log("Lost connection to MYSQL, reestablishing before we run the command.")
+        global.con = createConnection(mysql);
 
-        // MYSQL test so I'm not writing it in every command
-        global.con.ping(function (err) 
-        {
-            if (err) 
+        // Then we are going to connect to our MySQL database and we will test this on errors
+        global.con.connect(err => {
+            // Console log if there is an error
+            if (err) return console.log(err);
+
+            // No error found?
+            console.log(`MySQL has been connected!`);
+
+            // execute the final command. Put everything above this.
+            try {
+                command.execute(message, args);
+            } 
+            catch (error) 
             {
-                console.log("Lost connection to MYSQL, reestablishing before we run the command.")
-                global.con = createConnection(mysql);
-
-                // Then we are going to connect to our MySQL database and we will test this on errors
-                global.con.connect(err => {
-                    // Console log if there is an error
-                    if (err) return console.log(err);
-
-                    // No error found?
-                    console.log(`MySQL has been connected!`);
-
-                    // execute the final command. Put everything above this.
-                    try {
-                        command.execute(message, args);
-                    } 
-                    catch (error) 
-                    {
-                        console.error(error);
-                        message.reply({
-                            content: "There was an error trying to execute that command!",
-                        });
-                    }
+                console.error(error);
+                message.reply({
+                    content: "There was an error trying to execute that command!",
                 });
             }
-            else
-            {
-                // execute the final command. Put everything above this.
-                try 
-                {
-                    command.execute(message, args);
-                } 
-                catch (error) 
-                {
-                    console.error(error);
-                    message.reply({
-                        content: "There was an error trying to execute that command!",
-                    });
-                }
-            }
-        })
+        });
 	},
 };
