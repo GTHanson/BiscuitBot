@@ -20,5 +20,7 @@ module.exports = {
             guildId: 906443090447982623,
             adapterCreator: interaction.channel.guild.voiceAdapterCreator,
         });
+
+        await interaction.reply({ content: 'Bark!'});
 	},
 };
