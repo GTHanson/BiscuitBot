@@ -11,6 +11,8 @@ const { Client, Collection, Intents } = require("discord.js");
 const { REST } = require("@discordjs/rest");
 const { Routes } = require("discord-api-types/v9");
 const { token, owner, client_id, test_guild_id } = require("./config.json");
+const { VoiceConnectionStatus, AudioPlayerStatus } = require('@discordjs/voice');
+
 global.adminIDs = [owner, "178273444041981952"];
 global.roleID = "980346316720857100";
 
@@ -24,6 +26,13 @@ const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
+connection.on(VoiceConnectionStatus.Ready, (oldState, newState) => {
+	console.log('Connection is in the Ready state!');
+});
+
+player.on(AudioPlayerStatus.Playing, (oldState, newState) => {
+	console.log('Audio player is in the Playing state!');
+});
 
 /**********************************************************************/
 // Below we will be making an event handler!
@@ -61,6 +70,7 @@ client.contextCommands = new Collection();
 client.modalCommands = new Collection();
 client.cooldowns = new Collection();
 client.triggers = new Collection();
+
 
 /**********************************************************************/
 // Registration of Message-Based Legacy Commands.
