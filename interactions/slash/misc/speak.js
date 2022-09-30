@@ -24,7 +24,7 @@ module.exports = {
 		),
 
 	async execute(interaction, args) {
-		const connection = await connectToChannel(interaction.channel.guild.channels.get(906443091454599168))
+		const connection = await connectToChannel(interaction.channel.guild.channels.fetch('906443091454599168'))
         connection.subscribe(player);
         await interaction.reply({ content: 'Bark!'});
 	},
