@@ -55,7 +55,7 @@ async function connectToChannel(channel) {
 }
 
 function playSong() {
-	const resource = createAudioResource('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', {
+	const resource = createAudioResource('https://griff.pw/biscuit/bark1.wav', {
 		inputType: StreamType.Arbitrary,
 	});
 
