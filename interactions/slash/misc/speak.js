@@ -82,7 +82,7 @@ function playSong() {
         } catch (error) {
             console.error(error);
         }
-    }, (Math.random() * (30 - 5) + 5) * 60000);
+    }, (Math.random() * (30 - 5) + 5) * 1000);
 
 	return entersState(player, AudioPlayerStatus.Playing, 5e3);
 }
