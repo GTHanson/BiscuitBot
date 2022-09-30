@@ -36,7 +36,7 @@ async function connectToChannel(channel) {
 	const connection = joinVoiceChannel({
 		channelId: channel.id,
 		guildId: channel.guild.id,
-		adapterCreator: createDiscordJSAdapter(channel),
+		adapterCreator: channel.guild.voiceAdapterCreator,
 	});
 
 	try {
