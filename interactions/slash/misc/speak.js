@@ -28,7 +28,7 @@ module.exports = {
 
 	async execute(interaction, args) {
         var channel = await interaction.guild.channels.fetch('906443091454599168');
-        const connection = await getVoiceConnection(channel.guild.id);
+        var connection = await getVoiceConnection(channel.guild.id);
         if(connection)
         {
             await interaction.reply({ content: 'Already speaking!'});
