@@ -5,6 +5,7 @@ const { joinVoiceChannel } = require('@discordjs/voice');
 
 // Specifically for button interactions.
 const { MessageButton } = require('discord.js');
+const player = createAudioPlayer();
 
 module.exports = {
 	// The only part that makes this different from a default command.
@@ -15,12 +16,25 @@ module.exports = {
 		),
 
 	async execute(interaction, args) {
-		const connection = await joinVoiceChannel({
-            channelId: interaction.channel.id,
-            guildId: interaction.channel.guild.id,
-            adapterCreator: interaction.channel.guild.voiceAdapterCreator,
-        });
-
+		const connection = await connectToChannel(interaction.guild.channels.get(906443091454599168))
+        connection.subscribe(player);
         await interaction.reply({ content: 'Bark!'});
 	},
 };
+
+
+async function connectToChannel(channel) {
+	const connection = joinVoiceChannel({
+		channelId: channel.id,
+		guildId: channel.guild.id,
+		adapterCreator: createDiscordJSAdapter(channel),
+	});
+
+	try {
+		await entersState(connection, VoiceConnectionStatus.Ready, 30e3);
+		return connection;
+	} catch (error) {
+		connection.destroy();
+		throw error;
+	}
+}
