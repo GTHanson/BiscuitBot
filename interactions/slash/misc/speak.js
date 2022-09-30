@@ -16,7 +16,13 @@ const {
 const { MessageButton } = require('discord.js');
 const player = createAudioPlayer();
 
-const sounds = ['https://griff.pw/biscuit/bark1.wav']
+const sounds = ['https://griff.pw/biscuit/bark1.wav', 'https://griff.pw/biscuit/bark2.wav', 'https://griff.pw/biscuit/bark3.wav',
+                'https://griff.pw/biscuit/bark4.wav', 'https://griff.pw/biscuit/bark5.wav', 'https://griff.pw/biscuit/bark6.wav',
+                'https://griff.pw/biscuit/bark7.wav', 'https://griff.pw/biscuit/bark8.wav', 'https://griff.pw/biscuit/bark9.wav',
+                'https://griff.pw/biscuit/bark10.wav', 'https://griff.pw/biscuit/bark11.wav', 'https://griff.pw/biscuit/bark12.wav',
+                'https://griff.pw/biscuit/bark13.wav', 'https://griff.pw/biscuit/bark14.wav', 'https://griff.pw/biscuit/bark15.wav',
+                'https://griff.pw/biscuit/bark16.wav', 'https://griff.pw/biscuit/bark17.wav', 'https://griff.pw/biscuit/bark18.wav',
+                'https://griff.pw/biscuit/bark19.wav', 'https://griff.pw/biscuit/bark20.wav', 'https://griff.pw/biscuit/bark21.wav',]
 
 module.exports = {
 	// The only part that makes this different from a default command.
