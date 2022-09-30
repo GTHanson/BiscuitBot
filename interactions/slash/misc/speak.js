@@ -27,6 +27,7 @@ module.exports = {
         var channel = await interaction.guild.channels.fetch('906443091454599168');
 		const connection = await connectToChannel(channel)
         connection.subscribe(player);
+        playSong();
         await interaction.reply({ content: 'Bark!'});
 	},
 };
@@ -46,4 +47,14 @@ async function connectToChannel(channel) {
 		connection.destroy();
 		throw error;
 	}
+}
+
+function playSong() {
+	const resource = createAudioResource('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', {
+		inputType: StreamType.Arbitrary,
+	});
+
+	player.play(resource);
+
+	return entersState(player, AudioPlayerStatus.Playing, 5e3);
 }
