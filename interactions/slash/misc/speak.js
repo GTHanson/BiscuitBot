@@ -9,11 +9,14 @@ const {
 	StreamType,
 	AudioPlayerStatus,
 	VoiceConnectionStatus,
+    getVoiceConnection,
 } = require('@discordjs/voice');
 
 // Specifically for button interactions.
 const { MessageButton } = require('discord.js');
 const player = createAudioPlayer();
+
+const sounds = ['https://griff.pw/biscuit/bark1.wav']
 
 module.exports = {
 	// The only part that makes this different from a default command.
@@ -25,11 +28,17 @@ module.exports = {
 
 	async execute(interaction, args) {
         var channel = await interaction.guild.channels.fetch('906443091454599168');
-		const connection = await connectToChannel(channel)
+        const connection = await getVoiceConnection(myVoiceChannel.guild.id);
+        if(connection)
+        {
+            await interaction.reply({ content: 'Already speaking!'});
+            return;
+        }
+
+		connection = await connectToChannel(channel)
         connection.subscribe(player);
         try {
             await playSong();
-            console.log('Song is ready to play!');
         } catch (error) {
             console.error(error);
         }
@@ -55,7 +64,7 @@ async function connectToChannel(channel) {
 }
 
 function playSong() {
-	const resource = createAudioResource('https://griff.pw/biscuit/bark1.wav', {
+	const resource = createAudioResource(sounds[Math.floor(Math.random()*sounds.length)], {
 		inputType: StreamType.Arbitrary,
 	});
 
