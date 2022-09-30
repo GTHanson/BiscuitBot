@@ -26,11 +26,11 @@ const client = new Client({
 	intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES],
 });
 
-connection.on(VoiceConnectionStatus.Ready, (oldState, newState) => {
+client.on(VoiceConnectionStatus.Ready, (oldState, newState) => {
 	console.log('Connection is in the Ready state!');
 });
 
-player.on(AudioPlayerStatus.Playing, (oldState, newState) => {
+client.on(AudioPlayerStatus.Playing, (oldState, newState) => {
 	console.log('Audio player is in the Playing state!');
 });
 
