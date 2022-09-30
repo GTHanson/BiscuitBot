@@ -1,7 +1,7 @@
 const { MessageEmbed, Collection } = require("discord.js");
 const { SlashCommandBuilder } = require("@discordjs/builders");
 const { MessageActionRow, MessageSelectMenu } = require('discord.js');
-import {
+const {
 	joinVoiceChannel,
 	createAudioPlayer,
 	createAudioResource,
@@ -9,7 +9,7 @@ import {
 	StreamType,
 	AudioPlayerStatus,
 	VoiceConnectionStatus,
-} from '@discordjs/voice';
+} = require('@discordjs/voice');
 
 // Specifically for button interactions.
 const { MessageButton } = require('discord.js');
