@@ -15,7 +15,7 @@ module.exports = {
 		),
 
 	async execute(interaction, args) {
-		const connection = joinVoiceChannel({
+		const connection = await joinVoiceChannel({
             channelId: interaction.channel.id,
             guildId: interaction.channel.guild.id,
             adapterCreator: interaction.channel.guild.voiceAdapterCreator,
